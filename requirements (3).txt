@@ -1,0 +1,7 @@
+pymongo
+python-dotenv
+wordcloud
+pandas
+nltk
+spacy
+scikit-learn
