@@ -2,7 +2,7 @@ name: Monthly WordCloud Generator
 
 on:
   schedule:
-    - cron: '0 20 1 * *'  # 8:00 PM UTC on the 9th
+    - cron: '0 20 1 * *'  # 8:00 PM UTC on the 1st
   workflow_dispatch:
 
 jobs:
