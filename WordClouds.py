@@ -323,7 +323,7 @@ def store_wordcloud_in_mongo(base64_uri, date_str):
 
 # Main Runner
 def run_wordcloud_pipeline():
-    df = fetch_articles_for_today()
+    df = fetch_articles_for_yesterday()
     date_str = datetime.utcnow().strftime("%Y-%m-%d")
 
     if df.empty:
