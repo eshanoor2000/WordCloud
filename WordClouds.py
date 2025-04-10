@@ -246,6 +246,16 @@ def load_custom_stopwords():
 
 def send_email(subject, body):
     try:
+        EMAIL_SENDER = EMAIL_CONFIG["EMAIL_SENDER"]
+        EMAIL_RECEIVER = EMAIL_CONFIG["EMAIL_RECEIVER"]
+        EMAIL_PASSWORD = EMAIL_CONFIG["EMAIL_PASSWORD"]
+        SMTP_SERVER = EMAIL_CONFIG["SMTP_SERVER"]
+        SMTP_PORT = EMAIL_CONFIG["SMTP_PORT"]
+
+        if not all([EMAIL_SENDER, EMAIL_RECEIVER, EMAIL_PASSWORD]):
+            print("Missing email configuration. Email not sent.")
+            return
+
         msg = MIMEMultipart()
         msg["From"] = EMAIL_SENDER
         msg["To"] = EMAIL_RECEIVER
