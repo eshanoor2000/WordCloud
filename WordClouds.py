@@ -272,17 +272,15 @@ def send_email(subject, body):
         print(f"Failed to send email notification: {e}")
 
 # Loading Data
-def fetch_articles_for_yesterday():
+def fetch_articles_for_today():
     client = MongoClient(MONGO_URI)
     collection = client[MONGO_DB][MONGO_COLLECTION]
 
-    yesterday = (datetime.utcnow() - timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)
-    end = yesterday + timedelta(days=1)
-
+    today = datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0)
     query = {
         "scraped_date": {
-            "$gte": yesterday,
-            "$lt": end
+            "$gte": today,
+            "$lt": today + timedelta(days=1)
         }
     }
 
@@ -333,7 +331,7 @@ def store_wordcloud_in_mongo(base64_uri, date_str):
 
 # Main Runner
 def run_wordcloud_pipeline():
-    df = fetch_articles_for_yesterday()
+    df = fetch_articles_for_today()
     date_str = datetime.utcnow().strftime("%Y-%m-%d")
 
     if df.empty:
