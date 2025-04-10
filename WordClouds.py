@@ -262,15 +262,17 @@ def send_email(subject, body):
         print(f"Failed to send email notification: {e}")
 
 # Loading Data
-def fetch_articles_for_today():
+def fetch_articles_for_yesterday():
     client = MongoClient(MONGO_URI)
     collection = client[MONGO_DB][MONGO_COLLECTION]
 
-    today = datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0)
+    yesterday = (datetime.utcnow() - timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)
+    end = yesterday + timedelta(days=1)
+
     query = {
         "scraped_date": {
-            "$gte": today,
-            "$lt": today + timedelta(days=1)
+            "$gte": yesterday,
+            "$lt": end
         }
     }
 
