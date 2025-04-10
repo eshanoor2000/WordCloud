@@ -34,11 +34,11 @@ MONGO_COLLECTION = os.getenv("MONGO_COLLECTION", "processed_articles")
 WORDCLOUD_COLLECTION = "wordclouds"
 
 EMAIL_CONFIG = {
-    "sender_email": os.getenv("EMAIL_SENDER"),
-    "sender_password": os.getenv("EMAIL_PASSWORD"),
-    "receiver_email": os.getenv("EMAIL_RECEIVER"),
-    "smtp_server": os.getenv("SMTP_SERVER", "smtp.gmail.com"),
-    "smtp_port": int(os.getenv("SMTP_PORT", 587)),
+    "EMAIL_SENDER": os.getenv("EMAIL_SENDER"),
+    "EMAIL_PASSWORD": os.getenv("EMAIL_PASSWORD"),
+    "EMAIL_RECEIVER": os.getenv("EMAIL_RECEIVER"),
+    "SMTP_SERVER": os.getenv("SMTP_SERVER", "smtp.gmail.com"),
+    "SMTP_PORT": int(os.getenv("SMTP_PORT", 587)),
 }
 
 # Stopwords
